@@ -1,4 +1,4 @@
-package entity;
+package model;
 
 import java.util.Objects;
 
@@ -8,6 +8,11 @@ public class EmplProj {
 
     public EmplProj(){
 
+    }
+
+    public EmplProj(Long employeeId, Long projectId) {
+        this.employeeId = employeeId;
+        this.projectId = projectId;
     }
 
     public Long getEmployeeId() {

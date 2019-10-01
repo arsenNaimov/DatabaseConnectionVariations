@@ -1,4 +1,4 @@
-package entity;
+package model;
 
 import java.util.Objects;
 
@@ -10,6 +10,14 @@ public class Address {
     private String postCode;
 
     public Address(){
+    }
+
+    public Address(Long id, String country, String city, String street, String postCode) {
+        this.id = id;
+        this.country = country;
+        this.city = city;
+        this.street = street;
+        this.postCode = postCode;
     }
 
     public Long getId() {

@@ -1,4 +1,4 @@
-package entity;
+package model;
 
 import java.util.Objects;
 
@@ -8,6 +8,11 @@ public class Project {
 
     public Project(){
 
+    }
+
+    public Project(Long id, String title) {
+        this.id = id;
+        this.title = title;
     }
 
     public Long getId() {

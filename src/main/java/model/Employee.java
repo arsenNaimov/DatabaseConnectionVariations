@@ -1,4 +1,4 @@
-package entity;
+package model;
 
 import java.util.Date;
 import java.util.Objects;
@@ -12,6 +12,14 @@ public class Employee {
 
     public Employee(){
 
+    }
+
+    public Employee(Long id, String firstName, String lastName, Date birthday, Long addressId) {
+        this.id = id;
+        this.firstName = firstName;
+        this.lastName = lastName;
+        this.birthday = birthday;
+        this.addressId = addressId;
     }
 
     public Long getId() {
