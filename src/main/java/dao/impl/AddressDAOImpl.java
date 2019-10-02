@@ -79,9 +79,9 @@ public class AddressDAOImpl extends Util implements AddressDAO {
             resultSet.next();
             address.setId(resultSet.getLong("ID"));
             address.setCountry(resultSet.getString("COUNTRY"));
-            address.setCountry(resultSet.getString("CITY"));
-            address.setCountry(resultSet.getString("STREET"));
-            address.setCountry(resultSet.getString("POST_CODE"));
+            address.setCity(resultSet.getString("CITY"));
+            address.setStreet(resultSet.getString("STREET"));
+            address.setPostCode(resultSet.getString("POST_CODE"));
         } catch (SQLException e) {
             e.printStackTrace();
         }finally{
