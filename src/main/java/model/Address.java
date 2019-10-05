@@ -1,23 +1,24 @@
 package model;
 
+import javax.persistence.*;
 import java.util.Objects;
 
+@Entity
+@Table(name = "ADDRESS")
 public class Address {
+    @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
+    @Column(name = "COUNTRY")
     private String country;
+    @Column(name = "CITY")
     private String city;
+    @Column(name = "STREET")
     private String street;
+    @Column(name = "POST_CODE", length = 10)
     private String postCode;
 
     public Address(){
-    }
-
-    public Address(Long id, String country, String city, String street, String postCode) {
-        this.id = id;
-        this.country = country;
-        this.city = city;
-        this.street = street;
-        this.postCode = postCode;
     }
 
     public Long getId() {
@@ -72,19 +73,4 @@ public class Address {
                 postCode.equals(address.postCode);
     }
 
-    @Override
-    public int hashCode() {
-        return Objects.hash(id, country, city, street, postCode);
-    }
-
-    @Override
-    public String toString() {
-        return "Address{" +
-                "id=" + id +
-                ", country='" + country + '\'' +
-                ", city='" + city + '\'' +
-                ", street='" + street + '\'' +
-                ", postCode='" + postCode + '\'' +
-                '}';
-    }
 }

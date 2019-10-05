@@ -1,25 +1,40 @@
 package model;
 
-import java.util.Date;
-import java.util.Objects;
 
+
+import javax.persistence.*;
+import java.util.Date;
+import java.util.Set;
+
+@Entity
+@Table(name = "EMPLOYEE")
 public class Employee {
+    @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
+
+    @Column(name = "FIRST_NAME")
     private String firstName;
+
+    @Column(name = "LAST_NAME")
     private String lastName;
+
+    @Column(name = "BIRTHDAY")
     private Date birthday;
-    private Long addressId;
+
+    @OneToOne(cascade = CascadeType.ALL)
+    private Address address;
+
+    @ManyToMany(cascade = CascadeType.ALL, fetch = FetchType.LAZY)
+    @JoinTable(
+            name = "EMPL_PROJ",
+            joinColumns = @JoinColumn(name = "EMPLOYEE_ID"),
+            inverseJoinColumns = @JoinColumn(name = "PROJECT_ID")
+    )
+    private Set<Project> projects;
 
     public Employee(){
 
-    }
-
-    public Employee(Long id, String firstName, String lastName, Date birthday, Long addressId) {
-        this.id = id;
-        this.firstName = firstName;
-        this.lastName = lastName;
-        this.birthday = birthday;
-        this.addressId = addressId;
     }
 
     public Long getId() {
@@ -54,29 +69,21 @@ public class Employee {
         this.birthday = birthday;
     }
 
-    public Long getAddressId() {
-        return addressId;
+
+    public Address getAddress() {
+        return address;
     }
 
-    public void setAddressId(Long addressId) {
-        this.addressId = addressId;
+    public void setAddress(Address address) {
+        this.address = address;
     }
 
-    @Override
-    public boolean equals(Object o) {
-        if (this == o) return true;
-        if (o == null || getClass() != o.getClass()) return false;
-        Employee employee = (Employee) o;
-        return id.equals(employee.id) &&
-                firstName.equals(employee.firstName) &&
-                lastName.equals(employee.lastName) &&
-                birthday.equals(employee.birthday) &&
-                addressId.equals(employee.addressId);
+    public Set<Project> getProjects() {
+        return projects;
     }
 
-    @Override
-    public int hashCode() {
-        return Objects.hash(id, firstName, lastName, birthday, addressId);
+    public void setProjects(Set<Project> projects) {
+        this.projects = projects;
     }
 
     @Override
@@ -86,7 +93,7 @@ public class Employee {
                 ", firstName='" + firstName + '\'' +
                 ", lastName='" + lastName + '\'' +
                 ", birthday=" + birthday +
-                ", addressId=" + addressId +
+                ", address=" + address +
                 '}';
     }
 }
