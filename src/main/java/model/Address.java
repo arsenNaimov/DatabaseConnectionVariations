@@ -62,15 +62,13 @@ public class Address {
     }
 
     @Override
-    public boolean equals(Object o) {
-        if (this == o) return true;
-        if (o == null || getClass() != o.getClass()) return false;
-        Address address = (Address) o;
-        return id.equals(address.id) &&
-                country.equals(address.country) &&
-                city.equals(address.city) &&
-                street.equals(address.street) &&
-                postCode.equals(address.postCode);
+    public String toString() {
+        return "Address{" +
+                "id=" + id +
+                ", country='" + country + '\'' +
+                ", city='" + city + '\'' +
+                ", street='" + street + '\'' +
+                ", postCode='" + postCode + '\'' +
+                '}';
     }
-
 }

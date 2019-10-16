@@ -1,10 +1,8 @@
 package bl;
-
-import org.hibernate.Session;
 import org.hibernate.SessionFactory;
 import org.hibernate.cfg.Configuration;
 
-public class HIbernateUtil {
+public class HibernateUtil {
     private static final SessionFactory sessionFactory = buildSessionFactory();
 
     private static SessionFactory buildSessionFactory() {
@@ -18,8 +16,7 @@ public class HIbernateUtil {
         return sessionFactory;
     }
 
-    public static void shutdown(Session session){
-        session.close();
+    public static void shutdown(){
         getSessionFactory().close();
     }
 

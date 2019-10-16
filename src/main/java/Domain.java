@@ -1,9 +1,10 @@
-import bl.HIbernateUtil;
+import bl.HibernateUtil;
 import model.Address;
 import model.Employee;
 import model.Project;
-import org.hibernate.Session;
-
+import service.AddressService;
+import service.EmployeeService;
+import service.ProjectService;
 import java.sql.Date;
 import java.sql.SQLException;
 import java.util.HashSet;
@@ -12,8 +13,9 @@ import java.util.Set;
 public class Domain {
 
     public static void main(String[] args) throws SQLException {
-        Session session = HIbernateUtil.getSessionFactory().openSession();
-        session.beginTransaction();
+        AddressService addressService = new AddressService();
+        EmployeeService employeeService = new EmployeeService();
+        ProjectService projectService = new ProjectService();
 
         Address address = new Address();
         address.setCountry("Russia");
@@ -39,13 +41,11 @@ public class Domain {
         projects.add(project);
         employee.setProjects(projects);
 
-        session.save(address);
-        session.save(project);
-        session.save(employee);
+        addressService.add(address);
+        employeeService.add(employee);
+        projectService.add(project);
 
-
-        session.getTransaction();
-        HIbernateUtil.shutdown(session);
+        HibernateUtil.shutdown();
     }
 
 }
