@@ -10,7 +10,7 @@ import java.sql.SQLException;
 import java.util.HashSet;
 import java.util.Set;
 
-public class Domain {
+public class ClassForTestBd {
 
     public static void main(String[] args) throws SQLException {
         AddressService addressService = new AddressService();
